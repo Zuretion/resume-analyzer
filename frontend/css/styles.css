@@ -1,0 +1,7 @@
+/* Здесь — кастомные стили, которые неудобно выражать Tailwind-классами
+   прямо в разметке (анимации, редкие переопределения и т.д.).
+   Большая часть стилей сейчас идёт через Tailwind-классы в index.html. */
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}

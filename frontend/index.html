@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Analyzer</title>
+  <!-- Tailwind через CDN — быстрый старт для разработки.
+       Для продакшена стоит перейти на Tailwind CLI/сборку (см. README). -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen">
+  <div class="max-w-2xl mx-auto px-4 py-10">
+    <header class="mb-8">
+      <h1 class="text-2xl font-semibold">Resume Analyzer</h1>
+      <p class="text-slate-500 mt-1">
+        Вставьте текст резюме и вакансии — получите оценку соответствия и советы по улучшению.
+      </p>
+    </header>
+
+    <form id="analyze-form" class="space-y-4">
+      <div>
+        <label for="resume" class="block text-sm font-medium mb-1">Резюме</label>
+        <textarea
+          id="resume"
+          rows="8"
+          required
+          class="w-full rounded-lg border border-slate-300 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
+          placeholder="Вставьте текст резюме..."
+        ></textarea>
+        <div class="mt-2">
+          <label for="resume-file" class="block text-xs text-slate-500 mb-1">Или загрузите файл (PDF, DOCX)</label>
+          <input type="file" id="resume-file" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200" accept=".pdf,.docx" />
+        </div>
+      </div>
+
+
+      <div>
+        <label for="job" class="block text-sm font-medium mb-1">Вакансия</label>
+        <textarea
+          id="job"
+          rows="8"
+          required
+          class="w-full rounded-lg border border-slate-300 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
+          placeholder="Вставьте текст вакансии..."
+        ></textarea>
+        <div class="mt-2">
+          <label for="job-file" class="block text-xs text-slate-500 mb-1">Или загрузите файл (PDF, DOCX)</label>
+          <input type="file" id="job-file" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200" accept=".pdf,.docx" />
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        id="submit-btn"
+        class="w-full rounded-lg bg-slate-900 text-white font-medium py-3 hover:bg-slate-700 transition disabled:opacity-50"
+      >
+        Проанализировать
+      </button>
+    </form>
+
+    <section id="result" class="mt-8 hidden">
+      <div class="rounded-xl border border-slate-200 bg-white p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg font-semibold">Результат</h2>
+          <span id="result-label" class="text-sm font-medium px-3 py-1 rounded-full"></span>
+        </div>
+
+        <div class="mb-6">
+          <div class="flex items-end justify-between mb-1">
+            <span class="text-sm text-slate-500">Соответствие</span>
+            <span id="result-score" class="text-2xl font-bold"></span>
+          </div>
+          <div class="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+            <div id="score-bar" class="h-full bg-slate-900 transition-all"></div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-medium text-slate-500 mb-2">Советы по улучшению</h3>
+          <ul id="suggestions-list" class="space-y-2 text-sm"></ul>
+        </div>
+      </div>
+    </section>
+
+    <p id="error-message" class="mt-4 text-sm text-red-600 hidden"></p>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

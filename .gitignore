@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.pyc
+.env
+backend/ml/model/
+*.egg-info/
+.DS_Store
